@@ -9,20 +9,17 @@ from PIL import Image, ImageFont, ImageDraw
 
 import argparse
 
-# TODO: Remove Strange Padding. See example below
 '''
-Example:
-####################################
-
-
-   ██    █  █     █   █        █
-  █  █      █     █   █        █
- █       █ ███    █   █  █  █  ███
- █  ███  █  █     █████  █  █  █  █
- █    █  █  █     █   █  █  █  █  █
-  █  █   █  █     █   █  █  █  █  █
-   ██    █  ██    █   █   ███  ███
-####################################
+#############################################################
+ █   █        █  █             █   █   █          █     █  █ 
+ █   █        █  █             █  █ █  █          █     █  █ 
+ █   █   ██   █  █   ██         █ █ █ █   ██   ██ █   ███  █ 
+ █████  █  █  █  █  █  █        █ █ █ █  █  █  █  █  █  █  █ 
+ █   █  ████  █  █  █  █        █ █ █ █  █  █  █  █  █  █  █ 
+ █   █  █     █  █  █  █        █ █ █ █  █  █  █  █  █  █    
+ █   █   ███  █  █   ██   █      █   █    ██   █  █   ███  █ 
+                          █                                  
+#############################################################
 '''
 
 '''
@@ -103,14 +100,17 @@ hr = args.hr_char * image.width
 if args.hr:
     print hr
 
+up_padding = True
 for row_num in range(size[1]):
     line = []
     for column in range(size[0]):
         if image.getpixel((column, row_num)):
-            line.append(args.space_char),
+            line.append(args.space_char)
         else:
-            line.append(args.char),
-    print args.gap_char.join(line)
+            line.append(args.char)
+            up_padding = False
+    if up_padding is False:
+        print args.gap_char.join(line)
 
 if args.hr:
     print hr
