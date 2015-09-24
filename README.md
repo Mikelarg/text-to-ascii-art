@@ -13,7 +13,7 @@ This script converts your text to ASCII art
 ```
 
 ## Installation
-  * Install pip, if you haven't install it yet. (https://pip.pypa.io/en/stable/installing/)
+  * Install pip, if you haven't install it yet. ([Click](https://pip.pypa.io/en/stable/installing/))
   * Instal Pillow(pip install Pillow)
   * All done
   
@@ -27,7 +27,7 @@ This script converts your text to ASCII art
   * -align ALIGN          Text Align(center, left, right) (Optional, default align — left)
   * -spacing SPACING      Text Spacing (Optional, default spacing — 0)
   * -size SIZE            Font Size (Optional, default size — 10)
-  * -signature SIGNATURE  Your Signature. \n — for new line(Optional, default signature — mine(✿´‿`))
+  * -signature SIGNATURE  Your Signature. \n — for new line(Optional, default signature — mine)
   * --left                If argument is defined, script writes you signature left side
   * --hr                  If argument is defined, script writes hr
     * -hr-char HR_CHAR      Your HR char(Optional, default char - '_')
