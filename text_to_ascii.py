@@ -9,6 +9,26 @@ from PIL import Image, ImageFont, ImageDraw
 
 import argparse
 
+# TODO: Remove Strange Padding. See example below
+'''
+Example:
+####################################
+
+
+   ██    █  █     █   █        █
+  █  █      █     █   █        █
+ █       █ ███    █   █  █  █  ███
+ █  ███  █  █     █████  █  █  █  █
+ █    █  █  █     █   █  █  █  █  █
+  █  █   █  █     █   █  █  █  █  █
+   ██    █  ██    █   █   ███  ███
+####################################
+'''
+
+'''
+    Arguments Parser Init
+'''
+
 parser = argparse.ArgumentParser(description="Text to ASCII")
 parser.add_argument('-text', help='Your text (Required)', type=str, required=True)
 parser.add_argument('-char', help='Your char for ASCII (Optional, default char — █)', default='█', type=str,
@@ -37,6 +57,10 @@ parser.add_argument('-hr-char', help="Your HR char", type=str, default='_',
                     required=False)
 parser.add_argument('--save-image', action='store_true', help="Save text image to PNG", required=False)
 
+'''
+    Get and Filter Arguments Values
+'''
+
 args = parser.parse_args()
 args.text = args.text.decode("utf-8").replace("\\n", "\n")
 args.char = args.char.decode("utf-8")
@@ -48,26 +72,31 @@ args.signature = args.signature.decode("utf-8")
 
 font = ImageFont.truetype(args.font, args.size)
 
-text_lines = args.text.split("\n")
-size = [0, 0]
-line_index = 0
-for line in text_lines:
-    line_size = font.getsize(line)
-    if line_size[0] > size[0]:
-        size[0] = line_size[0]
-    line_spacing = args.spacing
-    if line_index >= len(text_lines) - 1:
-        line_spacing = 0
-    size[1] += line_size[1] + line_spacing
-    line_index += 1
+'''
+    Get Size Of Image
+'''
 
+size = [0, 0]
+text_lines = args.text.split("\n")
+for line in text_lines:
+    line_width, line_height = font.getsize(line)
+    size[1] += line_height + args.spacing
+    size[0] = max(size[0], line_width)
 size = (size[0], size[1])
+
+'''
+    Draw Image
+'''
 
 image = Image.new('1', size, 1)
 draw = ImageDraw.Draw(image)
 draw.multiline_text((0, 0), args.text, font=font, align=args.align, spacing=args.spacing)
 if args.save_image:
     image.save('out.png')
+
+'''
+    Convert Image To ASCII
+'''
 
 hr = args.hr_char * image.width
 
@@ -85,6 +114,10 @@ for row_num in range(size[1]):
 
 if args.hr:
     print hr
+
+'''
+    Adding Signature
+'''
 
 signature = args.signature
 lines = signature.split("\\n")
