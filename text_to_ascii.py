@@ -1,8 +1,11 @@
 # coding=utf-8
 """
-    Installation:
-       pip install Pillow OR pip install -r requirements.txt;
-       All done:3;
+Installation:
+    Option 1: Install Pillow directly:
+        pip install Pillow
+    Option 2: Install all dependencies from requirements.txt:
+        pip install -r requirements.txt
+All done!
 """
 
 from PIL import Image, ImageFont, ImageDraw
