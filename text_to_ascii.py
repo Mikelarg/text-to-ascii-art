@@ -73,7 +73,6 @@ for line in text_lines:
     bbox = font.getbbox(line)
     line_width = bbox[2] - bbox[0]
     line_height = bbox[3] - bbox[1]
-    # line_width, line_height = font.getsize(line)
     line_height_with_spacing = font.size + args.spacing
     size[1] += line_height_with_spacing
     size[0] = max(size[0], line_width)
