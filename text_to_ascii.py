@@ -59,6 +59,7 @@ parser.add_argument('--save-image', action='store_true', help="Save text image t
 '''
 
 args = parser.parse_args()
+args.text = args.text.replace("\\n", "\n")
 args.align = args.align.lower()
 
 font = ImageFont.truetype(args.font, args.size)
