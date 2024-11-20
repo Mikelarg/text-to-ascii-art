@@ -119,4 +119,4 @@ for line in lines:
     if args.left:
         print(line)
     else:
-        print(' ' * (image.width - len(line))) + line
+        print((' ' * (image.width - len(line))) + line)
