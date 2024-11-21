@@ -14,14 +14,14 @@ This script converts your text to ASCII art
 
 ## Installation
   * Install pip, if you haven't install it yet. ([Click](https://pip.pypa.io/en/stable/installing/))
-  * Instal dependence (pip install Pillow or pip install -r requirements.txt)
+  * Instal dependence (`pip install Pillow` or `pip install -r requirements.txt`)
   * All done
 
 ## Using
-  Parameters :
+  Parameters:
   * -text TEXT            Your text (Required)
   * -char CHAR            Your char for ASCII (Optional, default char — █)
-  * -space-char SPACE_CHAR Your space char (Optional, default space char — space¯)
+  * -space-char SPACE_CHAR Your space char (Optional, default space char — space)
   * -gap-char GAP_CHAR    Your char between letters (Optional, default space char — empty)
   * -font FONT            Your Font (Optional, default font — Arial)
   * -align ALIGN          Text Align(center, left, right) (Optional, default align — left)
@@ -30,8 +30,8 @@ This script converts your text to ASCII art
   * -signature SIGNATURE  Your Signature. \n — for new line(Optional, default signature — mine)
   * --left                If argument is defined, script writes you signature left side
   * --hr                  If argument is defined, script writes hr
-    * -hr-char HR_CHAR      Your HR char(Optional, default char - '_')
-  * --save-image          Save text image to PNG(to file named 'out.png')
+    * -hr-char HR_CHAR      Your HR char (Optional, default char - '_')
+  * --save-image          Save text image to PNG (to file named 'out.png')
 
 ## Examples
 ```

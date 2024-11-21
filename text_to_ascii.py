@@ -42,7 +42,7 @@ parser.add_argument('-gap-char', help='Your char between letters (Optional, defa
                     required=False)
 parser.add_argument('-font', help='Your Font (Optional, default font — Arial)', type=str, default='Arial.ttf',
                     required=False)
-parser.add_argument('-align', help='Text Align(center, left, right) (Optional, default align — left)', type=str,
+parser.add_argument('-align', help='Text Align (center, left, right) (Optional, default align — left)', type=str,
                     default='left', required=False)
 parser.add_argument('-spacing', help='Text Spacing (Optional, default spacing — 0)', type=int,
                     default=0, required=False)
