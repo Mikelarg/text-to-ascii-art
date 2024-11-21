@@ -14,7 +14,7 @@ This script converts your text to ASCII art
 
 ## Installation
   * Install pip, if you haven't install it yet. ([Click](https://pip.pypa.io/en/stable/installing/))
-  * Instal Pillow (pip install Pillow or pip install -r requirements.txt)
+  * Instal dependence (pip install Pillow or pip install -r requirements.txt)
   * All done
 
 ## Using
