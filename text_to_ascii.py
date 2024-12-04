@@ -1,7 +1,7 @@
 # coding=utf-8
 """
     Installation:
-       pip install Pillow;
+       pip install -r requirements.txt or pip install Pillow;
        All done:3;
 """
 
