@@ -30,7 +30,7 @@ parser = argparse.ArgumentParser(description='Text to ASCII')
 parser.add_argument('-text', help='Your text (Required)', type=str, required=True)
 parser.add_argument('-char', help='Your char for ASCII (Optional, default char — █)', default='█', type=str,
                     required=False)
-parser.add_argument('-space-char', help='Your space char (Optional, default space char — space¯\_(ツ)_/¯)', default=' ',
+parser.add_argument('-space-char', help=r'Your space char (Optional, default space char — space¯\_(ツ)_/¯)', default=' ',
                     type=str,
                     required=False)
 parser.add_argument('-gap-char', help='Your char between letters (Optional, default space char — empty)', default='',
@@ -59,14 +59,8 @@ parser.add_argument('--save-image', action='store_true', help='Save text image t
 '''
 
 args = parser.parse_args()
-args.text = args.text.decode('utf-8').replace('\\n', '\n')
-args.char = args.char.decode('utf-8')
-args.gap_char = args.gap_char.decode('utf-8')
-args.space_char = args.space_char.decode('utf-8')
-args.hr_char = args.hr_char.decode('utf-8')
 args.align = args.align.lower()
-args.signature = args.signature.decode('utf-8')
-
+args.text = args.text.replace('\\n', '\n')
 font = ImageFont.truetype(args.font, args.size)
 
 '''
@@ -76,8 +70,11 @@ font = ImageFont.truetype(args.font, args.size)
 size = [0, 0]
 text_lines = args.text.split('\n')
 for line in text_lines:
-    line_width, line_height = font.getsize(line)
-    size[1] += line_height + args.spacing
+    bbox = font.getbbox(line)
+    line_width = bbox[2] - bbox[0]
+    line_height = bbox[3] - bbox[1]
+    line_height_with_spacing = font.size + args.spacing
+    size[1] += line_height_with_spacing
     size[0] = max(size[0], line_width)
 size = (size[0], size[1])
 
@@ -98,7 +95,7 @@ if args.save_image:
 hr = args.hr_char * (image.width + image.width * len(args.gap_char) - 1)
 
 if args.hr:
-    print hr
+    print(hr)
 
 up_padding = True
 for row_num in range(size[1]):
@@ -110,10 +107,10 @@ for row_num in range(size[1]):
             line.append(args.char)
             up_padding = False
     if up_padding is False:
-        print args.gap_char.join(line)
+        print(args.gap_char.join(line))
 
 if args.hr:
-    print hr
+    print(hr)
 
 '''
     Adding Signature
@@ -123,6 +120,6 @@ signature = args.signature
 lines = signature.split('\\n')
 for line in lines:
     if args.left:
-        print line
+        print(line)
     else:
-        print (' ' * (image.width - len(line))) + line
+        print((' ' * (image.width - len(line))) + line)
