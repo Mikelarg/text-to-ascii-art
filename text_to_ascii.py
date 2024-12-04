@@ -26,7 +26,7 @@ import argparse
     Arguments Parser Init
 '''
 
-parser = argparse.ArgumentParser(description="Text to ASCII")
+parser = argparse.ArgumentParser(description='Text to ASCII')
 parser.add_argument('-text', help='Your text (Required)', type=str, required=True)
 parser.add_argument('-char', help='Your char for ASCII (Optional, default char — █)', default='█', type=str,
                     required=False)
@@ -36,36 +36,36 @@ parser.add_argument('-space-char', help='Your space char (Optional, default spac
 parser.add_argument('-gap-char', help='Your char between letters (Optional, default space char — empty)', default='',
                     type=str,
                     required=False)
-parser.add_argument('-font', help="Your Font (Optional, default font — Arial)", type=str, default='Arial.ttf',
+parser.add_argument('-font', help='Your Font (Optional, default font — Arial)', type=str, default='Arial.ttf',
                     required=False)
-parser.add_argument('-align', help="Text Align(center, left, right) (Optional, default align — left)", type=str,
-                    default="left", required=False)
-parser.add_argument('-spacing', help="Text Spacing (Optional, default spacing — 0)", type=int,
+parser.add_argument('-align', help='Text Align(center, left, right) (Optional, default align — left)', type=str,
+                    default='left', required=False)
+parser.add_argument('-spacing', help='Text Spacing (Optional, default spacing — 0)', type=int,
                     default=0, required=False)
-parser.add_argument('-size', help="Font Size (Optional, default size — 10)", type=int, default=10, required=False)
-parser.add_argument('-signature', help="Your Signature. \\n — for new line(Optional, default signature — mine(✿´‿`))",
+parser.add_argument('-size', help='Font Size (Optional, default size — 10)', type=int, default=10, required=False)
+parser.add_argument('-signature', help='Your Signature. \\n — for new line(Optional, default signature — mine(✿´‿`))',
                     type=str,
-                    default="Made by Mikelarg\\nhttps://vk.com/mikelarg",
+                    default='Made by Mikelarg\\nhttps://vk.com/mikelarg',
                     required=False)
-parser.add_argument('--left', action='store_true', help="If argument is defined, script writes you signature left side",
+parser.add_argument('--left', action='store_true', help='If argument is defined, script writes you signature left side',
                     required=False)
-parser.add_argument('--hr', action='store_true', help="If argument is defined, script writes hr", required=False)
-parser.add_argument('-hr-char', help="Your HR char", type=str, default='_',
+parser.add_argument('--hr', action='store_true', help='If argument is defined, script writes hr', required=False)
+parser.add_argument('-hr-char', help='Your HR char', type=str, default='_',
                     required=False)
-parser.add_argument('--save-image', action='store_true', help="Save text image to PNG", required=False)
+parser.add_argument('--save-image', action='store_true', help='Save text image to PNG', required=False)
 
 '''
     Get and Filter Arguments Values
 '''
 
 args = parser.parse_args()
-args.text = args.text.decode("utf-8").replace("\\n", "\n")
-args.char = args.char.decode("utf-8")
-args.gap_char = args.gap_char.decode("utf-8")
-args.space_char = args.space_char.decode("utf-8")
-args.hr_char = args.hr_char.decode("utf-8")
+args.text = args.text.decode('utf-8').replace('\\n', '\n')
+args.char = args.char.decode('utf-8')
+args.gap_char = args.gap_char.decode('utf-8')
+args.space_char = args.space_char.decode('utf-8')
+args.hr_char = args.hr_char.decode('utf-8')
 args.align = args.align.lower()
-args.signature = args.signature.decode("utf-8")
+args.signature = args.signature.decode('utf-8')
 
 font = ImageFont.truetype(args.font, args.size)
 
@@ -74,7 +74,7 @@ font = ImageFont.truetype(args.font, args.size)
 '''
 
 size = [0, 0]
-text_lines = args.text.split("\n")
+text_lines = args.text.split('\n')
 for line in text_lines:
     line_width, line_height = font.getsize(line)
     size[1] += line_height + args.spacing
@@ -120,7 +120,7 @@ if args.hr:
 '''
 
 signature = args.signature
-lines = signature.split("\\n")
+lines = signature.split('\\n')
 for line in lines:
     if args.left:
         print line
